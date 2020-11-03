@@ -19,14 +19,15 @@ app.use(cors());
 app.use(express.static("public"));
 
 app.get('/',function(req,res){
+	// var ip = 
+	// req.headers['x-forwarded-for'] ||
+    // req.connection.remoteAddress ||
+    // req.socket.remoteAddress ||
+    // req.connection.socket.remoteAddress;
+	// console.log(ip)
 	res.sendFile(__dirname+'/public/index.html');
-	var ip = 
-	req.headers['x-forwarded-for'] ||
-    req.connection.remoteAddress ||
-    req.socket.remoteAddress ||
-    req.connection.socket.remoteAddress;
-    console.log(ip)
 });
+
 
 app.use(express.urlencoded({ extended: true, limit: "30mb" }));
 app.use(express.json({ limit: "30mb" }));
@@ -55,7 +56,7 @@ io.on("connection", (socket) => {
 
 	socket.on("identify", (obj) => {
 		var id = obj.socketid
-		this.mainroom.push({id})
+		//this.mainroom.push({id})
 		if(obj.name=="maingame"){
 			io.to(id).emit("data",{
 				"fly" : fly,
@@ -75,7 +76,7 @@ io.on("connection", (socket) => {
 		socket.emit('roomescapeclear')
 	})
 
-	socket.on("disconnect", (data) => [userlist.deleteUser(socket.id)]);
+	//socket.on("disconnect", (data) => [userlist.deleteUser(socket.id)]);
 
 
 	console.log(socket.id);

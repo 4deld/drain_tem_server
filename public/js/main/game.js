@@ -220,9 +220,9 @@ var play = {
             console.log("maingame socket on")
             var json = {
             'name':'maingame',
-            'socketid' : socket.id
+            'socketid' : this.socket.id
         }
-            socket.emit('identify', json);
+            this.socket.emit('identify', json);
       });
       this.socket.on("data",obj=>{
           fly = obj.fly
@@ -284,7 +284,6 @@ var play = {
 }
 
 
-socket.on()
 
 
 
