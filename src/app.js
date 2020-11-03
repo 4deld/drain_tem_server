@@ -7,8 +7,10 @@ const cors = require("cors");
 const helmet = require("helmet");
 var ip = require("ip");
 
-console.dir ( ip.address() );
+console.dir (ip.address());
 console.log(ip.address())
+
+//::1은 IpV6에서 로컬 호스트
 
 app.use('/css',express.static(__dirname + '/css'));
 app.use('/js',express.static(__dirname + '/js'));
@@ -19,12 +21,13 @@ app.use(cors());
 app.use(express.static("public"));
 
 app.get('/',function(req,res){
-	// var ip = 
-	// req.headers['x-forwarded-for'] ||
-    // req.connection.remoteAddress ||
-    // req.socket.remoteAddress ||
-    // req.connection.socket.remoteAddress;
-	// console.log(ip)
+	var ip = 
+	req.headers['x-forwarded-for'] ||
+    req.connection.remoteAddress ||
+    req.socket.remoteAddress ||
+    req.connection.socket.remoteAddress;
+	console.log(ip)
+
 	res.sendFile(__dirname+'/public/index.html');
 });
 
