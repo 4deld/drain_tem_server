@@ -7,24 +7,21 @@ const cors = require("cors");
 const helmet = require("helmet");
 var ip = require("ip");
 
-console.dir ( ip.address() );
-console.log(ip.address())
+console.dir(ip.address());
+console.log(ip.address());
 
-app.use('/css',express.static(__dirname + '/css'));
-app.use('/js',express.static(__dirname + '/js'));
-app.use('/assets',express.static(__dirname + '/assets'));
+// app.use("/css", express.static(__dirname + "/css"));
+// app.use("/js", express.static(__dirname + "/js"));
+// app.use("/assets", express.static(__dirname + "/assets"));
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(cors());
 
-app.get('/',function(req,res){
-	// var ip = 
-	// req.headers['x-forwarded-for'] ||
-    // req.connection.remoteAddress ||
-    // req.socket.remoteAddress ||
-    // req.connection.socket.remoteAddress;
-	// console.log(ip)
-	res.sendFile(__dirname+'/public/index.html');
+app.get("/", function (req, res, next) {
+	var ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
+	console.log("감자튀김", ip);
+	next();
+	// res.sendFile(__dirname+'/public/index.html');
 });
 
 app.use(express.static("public"));
