@@ -1,0 +1,77 @@
+body{
+    box-sizing: border-box;
+    font-size: 20px;
+    margin: 0;
+    /* user-select: none;
+    overflow: hidden; */
+    width: 100vw;
+    padding-top: 10px;
+    height: 100vh; 
+}
+.MainText{
+    text-align: center;
+    font-size: 1.7em;
+    align-items: center;
+    display: flex;
+}
+.layout{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.crowimg{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top:33vh;
+    left:14vw;
+}
+
+.btn{
+    cursor: pointer;
+    font-size: 2.5em;
+    
+}
+
+.box{
+    display: flex;
+    
+}
+
+.first{
+    margin-right: 100px;
+}
+.top{
+    display: flex;
+    align-items: center;
+    height: 10vh;   
+}
+.infobox{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: fit-content;
+    margin-right: 100px;
+
+}
+
+.left{
+    margin: 0 0 5vh 7vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 30vw;
+    height: 80vh;
+}
+
+.Name{
+    font-size: 2.6em;
+    margin-top: 50px;
+}
+hr{
+    width: 90%;
+    margin-right: 100px;
+}

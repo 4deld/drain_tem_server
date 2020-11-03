@@ -1,45 +1,37 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Socket</title>
-    <link rel="stylesheet" href="./css/style.css">
-  </head>
-  <body>
-    <a href="./index2.html" target="_blank">22</a>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-      
-      $(() => {
-        const socket = io();
-        socket.on('connect', () => {
-            var json = {
-            'name':'index',
-            'socketid' : socket.id
-          }
-            socket.emit('identify', json);
-        });
-        socket.on('connect', () => {console.log(socket.id)});
-        $('form').submit(() => {
-          var json = {
-            'chat' : $('#m').val(),
-            'socketid' : socket.id
-          }
-          socket.emit('chat message', json);
-          
-          $('#m').val('');
-          return false;
-        });
-        socket.on('chat message', (msg) => {
-          console.log(msg);
-          console.log(socket.id)
-          $('#messages').append($('<li>').text(msg));
-        });
-      });
-    </script>
-  </body>
+<head>
+    <title>Search</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="./css/searchstyle.css">
+</head>
+    <body>   
+        <div class="searchbox">
+            <img src="./assets/search/mainlogo.png" id="logo1">  
+            <input id="searchbar" type="text" autocomplete="off" />
+            <div class="b">
+                <img src="./assets/search/telescope.png" id="logo2">
+            </div>
+        </div>
+        <div class="rank">
+            <div id="a">
+                <div class="dot">•</div>
+                <div>1-10위</div> 
+            </div>
+
+            <div id="b">
+                <div>1 벽</div>
+                <div>2 까마귀</div>
+                <div>3 붉은 지붕</div>
+                <div>4</div>        
+                <div>5</div>        
+                <div>6</div>        
+                <div>7</div>        
+                <div>8</div>        
+                <div>9</div>        
+                <div>10</div>
+            </div>        
+        </div>
+        <script src="./js/search.js"></script>
+    </body>
 </html>
